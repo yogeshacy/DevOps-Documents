@@ -1,0 +1,205 @@
+waterfall vs scrumfall
+Roles of Devops 
+ensure the code lower to higher environment without any issues
+there is no downtime
+List of Tools
+
+Roles of Devops
+Ensure the relase the s/w smoothly
+Ensure availabuility in 99% of running application
+UNIX -->
+
+GNU(s/w ??? h/w) --> not an unix
+
+Linus Torvalds (GNU/Linux)
+
+command 
+uname -a 
+ls
+ls -d /boot
+cat /etc/*release
+cat /proc/cpuinfo
+cat /proc/meminfo
+fdisk or lsblk //disk information
+uname -i // processer information
+
+ls -A
+Ls -l
+touch sample note.txt lambda.py
+
+rm sample
+rm -f lambda.py //f --> forcefully removed 
+cp notes.txt pages.txt
+mv pages.txt page.txt
+
+Root directory (/)
+pwd --> present working directory
+cd /bin --> navicate to directory
+cd --> move to root directory 
+cd - --> previous working directory 
+cd -- --> previous of 2nd directory 
+cd .. --> immediate move to parent directory 
+. --> represent current working directory 
+
+mkdir /demo/new/yogesh  ## following dir not present directory not created 
+madir -p /demo/new/yogesh ## if it id not prsent created
+mkdir demo1 demo2 demo3 ## multiples of directory create single shot
+
+cp -r demo1 demo2 
+
+cp SOURCE TARGET
+
+mv SOURCE TARGET 
+rmdir demo ## remove empty directory
+rmdir --rf  demo/new/yogesh
+
+file concatenate
+cat /etc/passwd
+tac /etc/passwd
+head -n 5 /etc/passwd
+tail -n 5 /etc/passwd
+
+grep root /etc/passwd
+grep bash /etc/passwd
+
+awk -F : '{print $1}' /etc/passwd  ## column based trim 
+awk -F : '{print $1, $2}' /etc/passwd
+
+Regular Expression
+
+Editors
+vi, vim
+vim 
+1.ESC mode
+2.colon mode
+3.insert mode
+
+ESC mode 
+copy (yy) /nyy
+paste (p)
+delete or cut (dd)/ ndd
+undo (u)
+
+colon mode
+:/<search-word>
+
+search and replace 
+:%s/root/admin/
+:%s/root/admin/g --> g --> global access the line
+:%s/ROOT/admin/gi --> possible to case sensitive also
+
+sed -e 's/root/ROOT/' password 
+sed -e 's/root/ROOT/g' password
+sed -e 's/root/ROOT/2' password
+
+Insert Mode
+press --> i 
+:w --> save 
+:q --> quit
+:q! --> without save and quit
+:wq --> save and quit 
+
+find / -name passwd 
+find /etc -name passwd 
+curl <url> -o save_filename
+curl -O <url>
+
+tar -xf http.tar.gz
+unzip file1.zip
+curl -L -o shopping.zip <url> /// -L --> redirect to appropriate page 
+
+pipes (|)
+cat /etc/passwd | grep root 
+echo sample.txt | rm -r  --> its not working 
+echo sample.txt | xargs rm -f --> xargs user to bridge of some pipe command 
+
+Administration 
+uname -a 
+cat /etc/*release
+ssh root@192.168.2.10
+
+Process Management
+
+ps --> current user process only showing
+pa -u --> all users process visible 
+
+ps -ef --> detailed information about process 
+ps -ef | grep ssh
+sleep 10 // stop the procees some time
+ps -ef | grep sleep
+
+kill -9 <PID>
+
+user management
+
+groupadd devops
+
+cat /etc/group
+useradd -g devops yogesh
+
+id yogesh
+groupadd admins
+usermod -a -G admins yogesh
+passwd yogesh
+
+ps -ef | grep httpd
+ps -ef | grep tomcat 
+su - yogesh
+
+sudoers
+sudo useradd yogesh //normal user can't admin operation 
+cd /etc/sudoers.d/
+vim yogesh
+yogesh ALL=ALL 
+
+Package Managemenet
+RPM -->
+yum --> yellowDog updated modifier
+sudo yum list installed // view the list of package installed 
+sudo yum list installed | wc -l
+sudo yum list available | wc -l
+sudo yum list all
+sudo yum list | grep httpd
+sudo yum install nginx
+sudo yum install nginx -y 
+sudo yum remove nginx -y
+sudo yum update nginx -y
+cd /etc/yum.repos.d/
+sudo yum list | grep jenkins
+
+service management
+sudo systemctl list-util -t service 
+
+
+sudo systemctl enable httpd //its used to start the service automatically
+sudo systemctl status httpd
+sudo systemctl start httpd
+sudo systemctl restart httpd
+sudo systemctl disable httpd
+sudo reboot
+
+cat /etc/systemd/system/multi-user.target.wants/nginx.sevcie
+type npm // display service whwew will come
+sudo systemctl daemon-reload
+
+permission management
+sudo chown root hello.txt
+sudo chgrp root hello.txt
+sudo chown centos:bin hello.txt
+
+owner(u) r
+group(g) w
+others(o) x
+
+rwx rwx rwx
+owner group others 
+
+chmod ugo+rwx sample.txt
+chmod ugo-rwx sample.txt
+
+ip a // find ip address
+netstat lntp
+telnet
+
+netstat -tlnp
+telnet <ip-address> <port> 
